@@ -1,0 +1,28 @@
+<div class="card" style="width: 30rem">
+  <div class="card-header">Lists</div>
+  <p *ngIf="lists.length < 1" class="text">There is no any list</p>
+  <ul class="list-group list-group-flush">
+    <li
+      class="list-group-item list-group-item-action"
+      [class.active]="activeList?.id === list.id"
+      *ngFor="let list of lists"
+      (click)="onListSelect(list)"
+    >
+      <div class="list-item">
+        <p>{{ list.title }}</p>
+        <div class="btns">
+          <button class="btn btn-warning" (click)="$event.stopPropagation()">
+            Edit
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="onDelete(list.id); $event.stopPropagation()"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <app-form (onSubmit)="onAddList($event)" [input]="formInput"></app-form>
+</div>

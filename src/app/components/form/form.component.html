@@ -1,0 +1,12 @@
+<form (submit)="handleSubmit()">
+  <div class="input-group mb-3">
+    <input
+      class="form-control"
+      [placeholder]="input.placeholder"
+      [(ngModel)]="title"
+      name="title"
+      required
+    />
+    <button class="btn btn-primary">{{ input.btn }}</button>
+  </div>
+</form>

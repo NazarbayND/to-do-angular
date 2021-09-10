@@ -1,0 +1,36 @@
+<div class="card" style="width: 50rem">
+  <div class="card-header">Tasks</div>
+  <p *ngIf="!tasks || (tasks && tasks.length < 1)" class="text">
+    There is no tasks
+  </p>
+  <ul class="list-group list-group-flush">
+    <li
+      class="list-group-item list-group-item-action"
+      *ngFor="let task of tasks"
+      (click)="handleIsDone(task.id)"
+    >
+      <div class="list-item">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [checked]="task.isDone"
+            (change)="handleIsDone(task.id)"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            {{ task.title }}
+          </label>
+        </div>
+        <div class="btns">
+          <button
+            class="btn btn-danger"
+            (click)="taskDelete(task.id); $event.stopPropagation()"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <app-form (onSubmit)="onAddTask($event)" [input]="formInput"></app-form>
+</div>

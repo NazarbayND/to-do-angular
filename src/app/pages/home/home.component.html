@@ -1,0 +1,15 @@
+<div class="body">
+  <app-lists
+    [lists]="lists"
+    [activeList]="activeList"
+    (selectList)="handleListSelect($event)"
+    (addList)="handleListAdd($event)"
+    (deleteList)="handleListDelete($event)"
+  ></app-lists>
+  <app-tasks
+    [tasks]="activeList?.tasks || null"
+    (doneTask)="handleTaskDone($event)"
+    (addTask)="handleTaskAdd($event)"
+    (deleteTask)="handleTaskDelete($event)"
+  ></app-tasks>
+</div>
